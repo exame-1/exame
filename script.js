@@ -5951,14 +5951,15 @@ function handleMeusArquivos() {
     paginaArquivos.style.display = "block";
 
     // Lista de disciplinas e seus respectivos PDFs
-    const rascunhos = [
-      { nome: "Matemática", link: "/Users/dylan/Desktop/EXAME-2025/mat.pdf" },
-      { nome: "Português", link: "/Users/dylan/Desktop/EXAME-2025/fome.pdf" },
-      { nome: "Química", link: "/Users/dylan/Desktop/EXAME-2025/qui.pdf" },
-      { nome: "Física", link: "/Users/dylan/Desktop/EXAME-2025/fis.pdf" },
-      { nome: "Inglês", link: "/Users/dylan/Desktop/EXAME-2025/eng.pdf" },
-      { nome: "Francês", link: "/Users/dylan/Desktop/EXAME-2025/frace.pdf" },
-    ];
+const rascunhos = [
+  { nome: "Matemática", link: "https://raw.githubusercontent.com/exame-1/exame/main/mat.pdf" },
+  { nome: "Português", link: "https://raw.githubusercontent.com/exame-1/exame/main/fome.pdf" },
+  { nome: "Química", link: "https://raw.githubusercontent.com/exame-1/exame/main/qui.pdf" },
+  { nome: "Física", link: "https://raw.githubusercontent.com/exame-1/exame/main/fis.pdf" },
+  { nome: "Inglês", link: "https://raw.githubusercontent.com/exame-1/exame/main/eng.pdf" },
+  { nome: "Francês", link: "https://raw.githubusercontent.com/exame-1/exame/main/frace.pdf" },
+];
+
 
     // Popula os botões de disciplinas dinamicamente
     listaArquivos.innerHTML = ""; // Limpa antes de adicionar
