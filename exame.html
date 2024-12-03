@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Preparação para Exames de Admissão 2025</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+	
+  <div id="app">
+    <div id="start-section">
+      <h1>Bem-vindo à Preparação para Exames de Admissão 2025</h1>
+      <p>Clique no botão abaixo para começar o jogo.</p>
+      <button id="start-btn">Começar</button>
+    </div>
+
+    <div id="discipline-section" style="display: none;">
+      <h2>Escolha uma disciplina:</h2>
+      <button class="discipline-btn" data-discipline="Matemática">Matemática</button>
+      <button class="discipline-btn" data-discipline="Português">Português</button>
+      <button class="discipline-btn" data-discipline="Biologia">Biologia</button>
+	  <button class="discipline-btn" data-discipline="Química">Química</button>
+	  <button class="discipline-btn" data-discipline="Física">Física</button>
+	  <button class="discipline-btn" data-discipline="Geografia">Geografia</button>
+      <button class="discipline-btn" data-discipline="História">História</button>
+	  <button class="discipline-btn" data-discipline="Inglês">Inglês</button>
+	  <button class="discipline-btn" data-discipline="Francês">Francês</button>
+	  <button class="discipline-btn" data-discipline="Música">Música</button>
+		<button id="meusArquivosButton" onclick="handleMeusArquivos()">Meus Arquivos</button>
+			 
+
+         <!-- Meus Arquivos -->
+        <div id="paginaArquivos" style="display: none;">
+             <h2>Rascunhos por Disciplina</h2>
+             <div id="listaArquivos">
+             <!-- Botões das disciplinas -->
+             <button class="btnRascunho" data-pdf="matematica.pdf">Matemática</button>
+             <button class="btnRascunho" data-pdf="portugues.pdf">Português</button>
+             <button class="btnRascunho" data-pdf="quimica.pdf">Química</button>
+             <button class="btnRascunho" data-pdf="fisica.pdf">Física</button>
+             <button class="btnRascunho" data-pdf="ingles.pdf">Inglês</button>
+             <button class="btnRascunho" data-pdf="frances.pdf">Francês</button>
+             </div>
+          </div>
+
+       </div>
+		
+  
+    <div id="exam-section" style="display: none;">
+      <h2>Exame de <span id="discipline-name"></span></h2>
+      <p>Tempo restante: <span id="timer">10:00</span></p>
+      <div id="question-container">
+        <h3 id="question-text"></h3>
+        <div id="options">
+          <!-- As opções serão adicionadas dinamicamente -->
+        </div>
+      </div>
+      <button id="next-question-btn" style="display: none;">Próxima questão</button>
+    </div>
+
+    <div id="result-section" style="display: none;">
+      <h2>Resultado</h2>
+      <p id="result-message"></p>
+      <button id="restart-btn">Reiniciar Jogo</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

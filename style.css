@@ -1,0 +1,395 @@
+/* Corpo e container principal */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #007bff, #6dd5ed);
+  color: #fff;
+}
+
+#app {
+  text-align: center;
+  background: #fff;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Títulos e textos */
+h1, h2, h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Botões gerais */
+button {
+  margin: 10px 0;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(to right, #6dd5ed, #007bff);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #007bff, #6dd5ed);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Botões das opções */
+#options {
+  text-align: left;
+  margin: 20px 0;
+}
+
+/* Estilo base para os botões */
+.option-btn {
+  padding: 15px 25px;
+  margin: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, #1e88e5, #1565c0); /* Gradiente inicial */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease; /* Transições suaves */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Realce no texto */
+}
+
+/* Efeito ao passar o mouse */
+.option-btn:hover {
+  background: linear-gradient(45deg, #42a5f5, #1e88e5); /* Cores mais vivas */
+  transform: translateY(-5px); /* Eleva o botão levemente */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+}
+
+/* Efeito ao clicar */
+.option-btn:active {
+  background: linear-gradient(45deg, #1565c0, #0d47a1); /* Cor mais escura */
+  transform: translateY(2px); /* Simula o botão sendo pressionado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra reduzida */
+}
+
+/* Botão correto */
+.option-btn.correct {
+  background: linear-gradient(45deg, #43a047, #2e7d32); /* Verde elegante */
+  box-shadow: 0 8px 15px rgba(34, 139, 34, 0.3); /* Realce na sombra */
+  transform: scale(1.05); /* Pequeno aumento para destacar */
+}
+
+/* Botão incorreto */
+.option-btn.wrong {
+  background: linear-gradient(45deg, #e53935, #b71c1c); /* Vermelho vivo */
+  box-shadow: 0 8px 15px rgba(255, 69, 58, 0.3); /* Sombra para destaque */
+  transform: scale(0.95); /* Leve diminuição */
+}
+
+/* Botão desabilitado */
+.option-btn:disabled {
+  background: linear-gradient(45deg, #bdbdbd, #9e9e9e); /* Cinza elegante */
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* Efeito de clicar */
+.option-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para botão correto */
+.option-btn.correct {
+  background: linear-gradient(45deg, #4caf50, #1b5e20);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para botão incorreto */
+.option-btn.wrong {
+  background: linear-gradient(45deg, #e53935, #b71c1c);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão desabilitado */
+.option-btn:disabled {
+  background: #bdbdbd;
+  color: #ffffff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+.option-btn:hover {
+  background: #e6f7ff;
+  border-color: #007bff;
+}
+
+.option-btn.correct {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.option-btn.wrong {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+/* Temporizador */
+#timer {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 20px 0;
+  color: #007bff;
+}
+
+/* Seções */
+#discipline-section,
+#exam-section,
+#result-section {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+#textoModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#meusArquivosButton {
+      padding: 12px 25px; /* Tamanho reduzido */
+      font-size: 16px;
+      color: white;
+      background: linear-gradient(45deg, #4FC3F7, #29B6F6, #0288D1, #00FFC6); /* Tons de azul claro e verde aqua */
+      background-size: 300% 300%;
+      border: none;
+      border-radius: 30px; /* Bordas arredondadas */
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 0 0 8px rgba(41, 182, 246, 0.4); /* Brilho mais claro */
+      animation: moveGradient 4s ease infinite, glowEffect 3s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    #meusArquivosButton:hover {
+      transform: scale(1.1); /* Ampliação suave no hover */
+      box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.3), 0 0 12px rgba(41, 182, 246, 0.5); /* Brilho azul claro no hover */
+    }
+
+    @keyframes moveGradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes glowEffect {
+      0% {
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 0 0 8px rgba(41, 182, 246, 0.3);
+      }
+      50% {
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 12px rgba(41, 182, 246, 0.4);
+      }
+      100% {
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), 0 0 8px rgba(41, 182, 246, 0.3);
+      }
+    }.
+
+
+/* Estilo da seção */
+#paginaArquivos {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border: 1px solid #90caf9;
+  padding: 25px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#paginaArquivos h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #1565c0;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+/* Estilo da seção */
+#paginaArquivos {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border: 1px solid #90caf9;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 1s ease;
+}
+
+
+------------------------------------------------------------
+
+/* Estilo da seção principal */
+#paginaArquivos {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da seção */
+#paginaArquivos h2 {
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #343a40;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Contêiner dos botões */
+#listaArquivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botões estilizados - tamanho menor */
+.btnRascunho {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  border: none;
+  padding: 10px 20px; /* Reduzido */
+  font-size: 14px; /* Reduzido */
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 20px; /* Reduzido */
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Efeitos ao passar o mouse */
+.btnRascunho:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Efeitos ao clicar */
+.btnRascunho:active {
+  background: linear-gradient(135deg, #4a00e0, #1c1fbd);
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Ícones opcionais no botão */
+.btnRascunho::before {
+  content: '📄'; /* Ícone de documento */
+  margin-right: 8px;
+  font-size: 16px; /* Reduzido */
+}
+
+/* Animação para exibir a seção */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste responsivo para telas médias */
+@media (max-width: 768px) {
+  .btnRascunho {
+    font-size: 12px; /* Reduzido */
+    padding: 8px 15px; /* Reduzido */
+    border-radius: 18px;
+  }
+}
+
+/* Ajuste responsivo para telas pequenas */
+@media (max-width: 480px) {
+  .btnRascunho {
+    font-size: 10px; /* Reduzido */
+    padding: 6px 10px; /* Reduzido */
+    border-radius: 15px;
+  }
+}
+
+

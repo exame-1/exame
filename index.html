@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login Seguro</title>
+    <link rel="stylesheet" href="style1.css">
+    <!-- Adicionando Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<div id="login-container">
+    <div id="logo">
+        <img src="/Users/dylan/Desktop/EXAME-2025/pic.png" alt="Logo">
+    </div>
+    <h1 class="title">Bem-vindo</h1>
+    <p class="subtitle">Faça login para continuar</p>
+
+    <form id="login-form" onsubmit="return validateLogin()">
+        <input type="email" id="username" placeholder="E-mail *" required>
+        <input type="password" id="password" placeholder="Senha *" required>
+        <button type="submit" class="btn-entrar">Entrar</button>
+    </form>
+
+    <footer>Copyright 2024 - Dylan Software</footer>
+</div>
+
+<script>
+// Configuração do Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyC1U_nn_Dq8KeJMCJpQBXPEoSkX9by0DAU",
+    authDomain: "exame-4a3f9.firebaseapp.com",
+    projectId: "exame-4a3f9",
+    storageBucket: "exame-4a3f9.firebasestorage.app",
+    messagingSenderId: "262256405904",
+    appId: "1:262256405904:web:4c485b60c4e5f112821715",
+    measurementId: "G-0ZQE1NFMVK"
+};
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Função de validação de login
+function validateLogin() {
+    const email = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Login bem-sucedido
+            window.location.href = "exame.html";
+        })
+        .catch((error) => {
+            // Tratar erros com mensagens amigáveis
+            handleLoginError(error.code);
+        });
+
+    return false; // Impede o envio do formulário
+}
+
+function handleLoginError(errorCode) {
+    let errorMessage = '';
+
+    switch (errorCode) {
+        case 'auth/user-not-found':
+            errorMessage = `Usuário não registrado. Entre em contato com o suporte pelo WhatsApp: <a href="https://wa.me/5588999999999" target="_blank">Clique aqui</a>`;
+            break;
+        case 'auth/wrong-password':
+            errorMessage = `E-mail ou senha incorretos. Entre em contato com o suporte pelo WhatsApp: <a href="https://wa.me/5588999999999" target="_blank">Clique aqui</a>`;
+            break;
+        case 'auth/invalid-email':
+            errorMessage = `O e-mail informado é inválido. Por favor, verifique e tente novamente.`;
+            break;
+        default:
+            errorMessage = `E-mail ou senha incorretos. Entre em contato com o suporte pelo WhatsApp: <a href="https://wa.me/258851722058?text=Olá!%20%20Somos%20a%20equipe%20de%20suporte%20técnico%20do%20Pre-exame,%20seu%20sistema%20de%20preparação%20para%20os%20exames%20de%20admissão%20de%202025.%20Estamos%20aqui%20para%20ajudar%20a%20garantir%20que%20sua%20experiência%20de%20estudo%20seja%20a%20melhor%20possível.%20Se%20você%20encontrar%20algum%20problema%20técnico%20ou%20tiver%20dúvidas%20sobre%20o%20uso%20da%20plataforma,%20estamos%20à%20disposição%20para%20ajudar.%20%20%0A%0AComo%20podemos%20ajudar%3F
+" target="_blank">Clique aqui</a>`;
+    }
+
+    document.getElementById('login-container').insertAdjacentHTML('beforeend', `<p class="error">${errorMessage}</p>`);
+}
+
+// Impedir acesso ao DevTools (F12 e atalhos comuns)
+document.addEventListener('keydown', function(e) {
+    if (e.key === "F12" || 
+        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) || 
+        (e.ctrlKey && e.key === "U")) {
+        e.preventDefault();
+        alert("Inspeção não permitida!");
+    }
+});
+
+// Desabilitar clique com o botão direito
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert("Ação desativada!");
+});
+</script>
+
+</body>
+</html>
+
