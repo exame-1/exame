@@ -18,15 +18,69 @@
             appId: "1:262256405904:web:4c485b60c4e5f112821715",
             measurementId: "G-0ZQE1NFMVK"
         };
+
+        // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
 
-        // Verificar autenticação antes de carregar a página
+        // Redirecionar para login se o usuário não estiver autenticado
         firebase.auth().onAuthStateChanged((user) => {
             if (!user) {
-                // Redireciona para a página de login se o usuário não estiver autenticado
-                window.location.href = "login.html";
+                logoutAndRedirect();
             }
         });
+
+        // Função para limpar todos os cookies
+        function clearCookies() {
+            document.cookie.split(";").forEach((cookie) => {
+                const name = cookie.split("=")[0].trim();
+                document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            });
+        }
+
+        // Função para redirecionar para login e limpar cookies
+        function logoutAndRedirect() {
+            clearCookies(); // Limpar cookies
+            firebase.auth().signOut().then(() => {
+                window.location.href = "login.html"; // Redirecionar para login
+            }).catch((error) => {
+                console.error("Erro ao deslogar:", error);
+                alert("Erro ao realizar logout. Por favor, entre em contato com o suporte.");
+            });
+        }
+
+        // Temporizador para inatividade
+        let inactivityTimer;
+
+        // Função para reiniciar o temporizador
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer); // Limpa o temporizador anterior
+            inactivityTimer = setTimeout(() => {
+                logoutAndRedirect(); // Desloga o usuário após 5 minutos
+            }, 5 * 60 * 1000); // 5 minutos
+        }
+
+        // Detectar eventos de interação do usuário
+        const events = ["mousemove", "keypress", "scroll", "click"];
+        events.forEach(event => {
+            window.addEventListener(event, resetInactivityTimer);
+        });
+
+        // Iniciar o temporizador ao carregar a página
+        window.onload = resetInactivityTimer;
+
+        // Função para gerenciar a seção "Meus Arquivos"
+        function handleMeusArquivos() {
+            const paginaArquivos = document.getElementById('paginaArquivos');
+            const disciplinaSection = document.getElementById('discipline-section');
+
+            if (paginaArquivos.style.display === 'none') {
+                paginaArquivos.style.display = 'block'; // Exibir seção
+                disciplinaSection.style.display = 'none'; // Ocultar disciplinas
+            } else {
+                paginaArquivos.style.display = 'none'; // Ocultar seção
+                disciplinaSection.style.display = 'block'; // Exibir disciplinas
+            }
+        }
     </script>
 </head>
 <body>
