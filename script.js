@@ -1866,7 +1866,7 @@ const historyQuestions = [
       "Musha",
       "Mwenemutapa"
     ],
-    "correct": 0
+    "correct": 1
   },
 
   {
@@ -1986,7 +1986,7 @@ const historyQuestions = [
       "de Limpopo",
       "de Delagoa Bay"
     ],
-    "correct": 1
+    "correct": 0
   },
 
   {
@@ -2022,7 +2022,7 @@ const historyQuestions = [
       "2004",
       "1992"
     ],
-    "correct": 0
+    "correct": 1
   },
 
   {
