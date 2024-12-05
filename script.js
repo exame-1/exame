@@ -1962,7 +1962,7 @@ const historyQuestions = [
       "Dar es Salaam",
       "Porto"
     ],
-    "correct": 2
+    "correct": 1
   },
 
   {
@@ -4916,7 +4916,7 @@ const portugueseQuestions = [
     "Agricultores familiares da CPLP",
     "Os agricultores", // Resposta correta
   ],
-  correct: 4, // Índice da resposta correta
+  correct: 0, // Índice da resposta correta
  },
 
   {
